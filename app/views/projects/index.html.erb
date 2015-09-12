@@ -12,7 +12,7 @@
       <tr>
         <td><%= project.name %></td>
         <td><%= link_to '所有任务', project_path(project), class: "btn btn-default" %>
-        <%= link_to '删除', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <%= link_to '删除', project_path(project, team_id: @team.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

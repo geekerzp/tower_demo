@@ -1,7 +1,7 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :members, :add_member, :remove_member]
-  before_action :set_team, only: [:index, :new, :create]
+  before_action :set_team, only: [:index, :new, :create, :destroy]
   before_action :check_permission, only: [:show]
 
   def index
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: '删除项目成功' }
+      format.html { redirect_to team_projects_path(@team), notice: '删除项目成功' }
     end
   end
 

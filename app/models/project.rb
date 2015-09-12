@@ -20,13 +20,7 @@ class Project < ActiveRecord::Base
   has_many :members, through: :accesses, source: :user
 
   has_many :todos, dependent: :destroy
-  has_many :uploads, dependent: :destroy
-  has_many :messages, dependent: :destroy
-  has_many :documents, dependent: :destroy
-  has_many :totolists, dependent: :destroy
   has_many :events, dependent: :destroy
-
-  has_one :attachmentdir, dependent: :destroy
 
   validates :name, presence: true
 end
