@@ -1,0 +1,5 @@
+<%= bootstrap_form_for([project, todo], remote: true) do |f| %>
+  <%= f.select :assignee, options_from_collection_for_select(project.members.all, "id", "username", f.object.user_id), { label: "指派给", include_blank: true }, { class: "assignee" } %>
+  <%= f.date_field :due, label: "截止时间" %>
+  <%= f.submit "更新", class: "btn btn-success" %>
+<% end %>

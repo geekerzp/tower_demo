@@ -1,0 +1,4 @@
+<%= bootstrap_form_for([project, todo, comment], remote: true) do |f| %>
+  <%= f.text_area :content, hide_label: true %>
+  <%= f.submit "提交评论", class: 'btn btn-success' %>
+<% end %>

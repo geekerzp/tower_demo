@@ -1,0 +1,6 @@
+<% if @todo.errors.any? %>
+alert("完成任务失败");
+<% else %>
+window.scrollTo(0, 0);
+window.location.reload();
+<% end %>

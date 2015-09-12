@@ -1,0 +1,6 @@
+<% if @team.errors.any? %>
+alert("<%= raw j(@team.errors.full_messages.join("\n")) %>");
+<% else %>
+window.scrollTo(0, 0);
+window.location.reload();
+<% end %>

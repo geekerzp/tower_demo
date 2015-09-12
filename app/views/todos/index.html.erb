@@ -1,0 +1,68 @@
+<div class="project-header row">
+  <div class="project-hd-info col-md-5">
+    <h2><%= @project.name %></h2>
+  </div>
+  <div class="project-links col-md-5 pull-right">
+    <h3>
+      <%= link_to "#{@project.members.size} 成员", members_project_path(@project), class: "label label-info" %>
+    </h3>
+  </div>
+</div>
+
+<hr/>
+
+<div class="row">
+  <div class="col-md-1"><h4>任务</h4></div>
+  <div class="col-md-2">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        添加任务
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#" id="add-todo">添加任务</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<!-- todos list -->
+<div class="row">
+  <div class="col-md-10">
+    <%= content_tag :ul, class: "todos list-group", data: { "project-id" => @project.id } do %>
+      <% @todos.each do |todo| %>
+        <%= content_tag :li, class: "todo list-group-item", data: { "todo-id" => todo.id  } do %>
+          <div class="todo-wrap">
+            <label class="checkbox-inline">
+              <%= check_box_tag "todo_done" %> <%= link_to todo.name, project_todo_path(@project, todo) %>
+            </label>
+            <% if todo.assignee || todo.due %>
+              <a class="todo-assign-due label label-danger"><%= todo.assignee.try(:username) %> <%= todo.try(:due) %></a>
+            <% else %>
+              <a class="todo-assign-due label label-info">未指派</a>
+            <% end %>
+            <span class="hide popover-head">指派任务</span>
+            <span class="hide popover-content">
+              <%= render "todos/assign_form", project: @project, todo: todo %>
+            </span>
+            <span class="pull-right">
+              <%= link_to "删除", project_todo_path(@project, todo), method: :delete, data: { confirm: "确认删除？" } %>
+            </span>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row" id="add-todo-form">
+  <div class="col-md-10">
+    <%= render "todos/form", project: @project, todo: @project.todos.new %>
+  </div>
+</div>
+
+<% content_for :script do %>
+  <script>window.TodosIndexView();</script>
+<% end %>

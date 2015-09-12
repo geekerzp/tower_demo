@@ -1,0 +1,27 @@
+<h1>所有项目</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= link_to '所有任务', project_path(project), class: "btn btn-default" %>
+        <%= link_to '删除', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '创建项目', new_team_project_path(@team), class: "btn btn-success" %>
+
+<% content_for :script do %>
+  <script>window.ProjectsIndexView();</script>
+<% end %>

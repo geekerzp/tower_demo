@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-10">
+    <div class="page-header">
+      <h2><%= @todo.name %></h2>
+    </div>
+
+    <div class="comments">
+      <ul class="list-group">
+        <% @todo.comments.each do |comment| %>
+          <li class="list-group-item">
+            <h4><%= comment.user.username %> <small><%= comment.created_at %></small></h4>
+            <p><%= comment.content %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="new-comment">
+      <%= render "comments/form", project: @project, todo: @todo, comment: @todo.comments.build %>
+    </div>
+
+    <hr/>
+
+    <div class="back">
+      <%= link_to '返回任务列表', project_todos_path(@project), class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

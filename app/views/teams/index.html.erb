@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-5">
+    <h1>所有团队</h1>
+
+    <ul class="list-group">
+      <% @teams.each do |team| %>
+        <li class="list-group-item">
+          <span><%= link_to team.name, team_projects_path(team) %></span>
+          <span class="pull-right"><%= link_to '删除', team, method: :delete, data: { confirm: '确认删除？' } %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-team-modal">
+      <span class="glyphicon glyphicon-plus"></span> 新的团队
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="add-team-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="add-team-modal-label">创建新的团队</h4>
+          </div>
+          <div class="modal-body">
+            <%= render "teams/form", user: current_user, team: current_user.teams.build %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

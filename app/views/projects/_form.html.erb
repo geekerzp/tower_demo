@@ -1,0 +1,4 @@
+<%= bootstrap_form_for([@team, @project]) do |f| %>
+  <%= f.text_field :name, label: "项目名称" %>
+  <%= f.submit "创建项目", class: "btn btn-success" %>
+<% end %>

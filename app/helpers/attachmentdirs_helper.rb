@@ -1,0 +1,2 @@
+module AttachmentdirsHelper
+end

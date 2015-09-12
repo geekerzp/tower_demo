@@ -1,0 +1,3 @@
+<% unless @events.empty? %>
+$(".events").append("<%= j render(partial: 'event', collection: @events, as: :event) %>");
+<% end %>

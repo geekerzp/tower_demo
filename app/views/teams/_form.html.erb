@@ -1,0 +1,4 @@
+<%= bootstrap_form_for([user, team], remote: true) do |f| %>
+  <%= f.text_field :name, label: "团队名称" %>
+  <%= f.submit "创建团队", class: "btn btn-success" %>
+<% end %>

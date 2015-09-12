@@ -1,0 +1,5 @@
+<%= bootstrap_form_for([project, todo], remote: true, layout: :inline) do |f| %>
+  <%= f.text_field :name, hide_label: true %>
+  <%= f.submit "创建任务" %>
+  <%= f.button "取消" , type: 'reset', class: "btn btn-danger cancel"%>
+<% end %>
