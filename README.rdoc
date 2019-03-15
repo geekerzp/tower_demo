@@ -26,3 +26,4 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+https://s3.amazonaws.com/gfresh-dev/avatars/aa155095-2f11-492e-9a1a-1ab6da71b062.jpeg
